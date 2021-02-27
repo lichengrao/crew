@@ -6,13 +6,16 @@ import { ThemeProvider } from 'styled-components';
 import Routes from 'routes';
 import { reportWebVitals } from 'core';
 import { GlobalStyles, theme } from 'styles';
+import Layout from 'layout';
 
 ReactDOM.render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <BrowserRouter>
-        <Routes />
+        <Layout>
+          <Routes />
+        </Layout>
       </BrowserRouter>
     </ThemeProvider>
   </StrictMode>,
