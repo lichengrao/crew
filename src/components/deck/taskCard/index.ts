@@ -1,6 +1,6 @@
-import { Task } from "components/game/task";
+import { Task } from 'components';
 
-import { CardType, Suit } from "./card";
+import { CardType, Suit } from 'components';
 
 export interface TaskCard {
   readonly value: number;

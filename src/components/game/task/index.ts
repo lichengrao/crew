@@ -1,6 +1,6 @@
 import { TaskCard } from 'components';
 
-import { TaskToken } from '../token';
+import { TaskToken } from 'components';
 
 export enum TaskState {
   InProgressLocked,
