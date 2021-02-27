@@ -22,6 +22,7 @@ export const Container = styled.div`
   display: flex;
   height: 700px;
   width: 700px;
+  align-self: center;
 `;
 
 export const PlayerHandArea = styled.div`

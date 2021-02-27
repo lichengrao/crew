@@ -8,7 +8,9 @@ export const Card = styled.div`
     flex: 1;
     flex-direction: column;
     max-height: fit-content;
-    padding: 15px;
+    max-width: fit-content;
+    align-self: center;
+    padding: 35px;
   `};
 `;
 
@@ -17,7 +19,8 @@ export const Content = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  max-width: 350px;
+
+  max-width: 800px;
   align-self: center;
 `;
 
