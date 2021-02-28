@@ -1,15 +1,4 @@
-import { CardState, CardType, Clue, Suit } from 'components';
-import { TaskCard } from 'components';
-
-export interface PlayCard {
-  readonly value: number;
-  readonly suit: Suit;
-  readonly type: CardType.Play;
-  playerId: number;
-  state: CardState;
-  clue?: Clue;
-  taskCard?: TaskCard;
-}
+import { CardState, CardType, Clue, PlayCard, Suit, TaskCard } from 'typings';
 
 export const initPlayCard = (
   value: number,

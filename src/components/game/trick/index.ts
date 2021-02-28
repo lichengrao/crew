@@ -1,10 +1,4 @@
-import { Suit } from 'components';
-import { PlayCard } from 'components';
-
-export interface Trick {
-  round: number;
-  cards: PlayCard[];
-}
+import { PlayCard, Suit, Trick } from 'typings';
 
 export const initTrick = (round: number): Trick => {
   return {

@@ -1,11 +1,6 @@
-import { Card, printCards } from 'components';
-import { initPlayCard, PlayCard } from 'components';
-import { initTaskCard, TaskCard } from 'components';
+import { printCards, initPlayCard, initTaskCard } from 'components';
 
-export interface Deck {
-  playCards: PlayCard[];
-  taskCards: TaskCard[];
-}
+import { Card, Deck, PlayCard, TaskCard } from 'typings';
 
 export const initDeck = (): Deck => {
   const deck: Deck = generateDeck();

@@ -1,29 +1,16 @@
-import { Deck } from 'components';
-import { TaskCard } from 'components';
-import { Player } from 'components';
+import { initTask, trickWinner } from 'components';
 
-import { initTask, Task, TaskState } from '../task';
-import { Trick, trickWinner } from '../trick';
-
-export enum MissionId {
-  Easy,
-  Medium,
-  Hard,
-}
-
-export enum MissionState {
-  Success,
-  Failure,
-  InProgress,
-}
-
-export interface Mission {
-  readonly missionId: MissionId;
-  unassignedTaskCards: TaskCard[];
-  outstandingTasks: Task[];
-  completedTasks: Task[];
-  missionState: MissionState;
-}
+import {
+  Deck,
+  Mission,
+  MissionId,
+  MissionState,
+  Player,
+  Task,
+  TaskCard,
+  TaskState,
+  Trick,
+} from 'typings';
 
 export const initMission = (missionId: MissionId): Mission => {
   return {

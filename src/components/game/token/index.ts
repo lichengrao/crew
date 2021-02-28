@@ -1,25 +1,4 @@
-export interface TaskToken {
-  // TODO: just do it bro
-}
-
-export enum TaskTokenNumber {
-  One,
-  Two,
-  Three,
-  Four,
-  Five,
-  Last,
-}
-
-export enum TaskTokenCondition {
-  Strict,
-  Relative,
-}
-
-export interface TaskToken {
-  readonly taskTokenNumber: TaskTokenNumber;
-  readonly taskTokenCondition: TaskTokenCondition;
-}
+import { TaskToken, TaskTokenCondition, TaskTokenNumber } from 'typings';
 
 export const initTaskToken = (
   taskTokenNumber: TaskTokenNumber,

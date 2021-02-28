@@ -16,6 +16,7 @@ const useStartNewGame = (): Output => {
   const startNewGame = async () => {
     setIsStartingNewGame(true);
     const newDeck = generateDeck();
+    const newPlayCardDeck = newDeck.playCards;
 
     try {
       await db.collection('rooms').doc(roomId).update({});

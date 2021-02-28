@@ -1,26 +1,27 @@
-import { printCard, printCards, Suit } from 'components';
-import { Deck, initDeck } from 'components';
-import { allCards, removeCard, validCards } from 'components';
-import { isRocketFour, PlayCard } from 'components';
-import { initPlayer, Player } from 'components';
+import {
+  allCards,
+  initDeck,
+  initMission,
+  initPlayer,
+  initTrick,
+  isRocketFour,
+  printCard,
+  printCards,
+  removeCard,
+  trickWinner,
+  validCards,
+} from 'components';
 
-import { initMission, Mission, MissionId } from 'components';
-import { initTrick, Trick, trickWinner } from 'components';
-import { GameState } from 'components';
-
-export interface Board {
-  readonly players: Player[];
-  readonly numPlayers: number;
-  readonly deck: Deck;
-  readonly commander: Player;
-  leader: Player;
-  curPlayer: Player;
-  mission: Mission;
-  status: GameState;
-  round: number;
-  numRounds: number;
-  tricks: Trick[];
-}
+import {
+  Board,
+  GameState,
+  Deck,
+  PlayCard,
+  MissionId,
+  Player,
+  Suit,
+  Trick,
+} from 'typings';
 
 export const initBoard = (playerIds: number[], missionId: MissionId): Board => {
   const deck: Deck = initDeck();

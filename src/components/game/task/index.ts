@@ -1,20 +1,4 @@
-import { TaskCard } from 'components';
-
-import { TaskToken } from 'components';
-
-export enum TaskState {
-  InProgressLocked,
-  InProgressUnlocked,
-  Success,
-  Failure,
-}
-
-export interface Task {
-  taskCard: TaskCard;
-  taskToken?: TaskToken;
-  playerId: number;
-  taskState: TaskState;
-}
+import { Task, TaskCard, TaskState } from 'typings';
 
 export const initTask = (taskCard: TaskCard, playerId: number): Task => {
   return {

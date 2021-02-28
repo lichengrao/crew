@@ -1,7 +1,4 @@
-import { Suit } from 'components';
-import { PlayCard } from 'components';
-
-export type Hand = Map<Suit, PlayCard[]>;
+import { Hand, PlayCard, Suit } from 'typings';
 
 export const initHand = (): Hand => {
   const hand: Hand = new Map();
