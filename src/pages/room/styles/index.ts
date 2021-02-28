@@ -20,6 +20,7 @@ export const Center = styled.div`
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   height: 700px;
   width: 700px;
   align-self: center;

@@ -138,3 +138,13 @@ export enum GameState {
   Failure,
   InProgress,
 }
+
+export interface Room {
+  id: string;
+  isGameDone: boolean;
+  player1Hand: Array<PlayCard | null>;
+  player2Hand: Array<PlayCard | null>;
+  player3Hand: Array<PlayCard | null>;
+  player4Hand: Array<PlayCard | null>;
+  taskCards: Array<TaskCard | null>;
+}

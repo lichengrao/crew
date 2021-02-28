@@ -1,3 +1,5 @@
+import React, { FC } from 'react';
+
 import { CardState, CardType, Clue, PlayCard, Suit, TaskCard } from 'typings';
 
 export const initPlayCard = (
@@ -22,3 +24,19 @@ export const initPlayCard = (
 export const isRocketFour = (playcard: PlayCard): boolean => {
   return playcard.suit === Suit.Rocket && playcard.value === 4;
 };
+
+interface IProps {
+  value: number;
+  suit: Suit;
+}
+
+const PlayCardComponent: FC<IProps> = ({ value, suit }) => {
+  return (
+    <>
+      <div>{value}</div>
+      <div>{Suit[suit]}</div>
+    </>
+  );
+};
+
+export default PlayCardComponent;

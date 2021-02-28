@@ -1,4 +1,4 @@
-import { generateDeck } from 'components';
+import { initDeck } from 'components';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -15,11 +15,19 @@ const useStartNewGame = (): Output => {
 
   const startNewGame = async () => {
     setIsStartingNewGame(true);
-    const newDeck = generateDeck();
-    const newPlayCardDeck = newDeck.playCards;
+    const { playCards, taskCards } = initDeck();
+
+    console.log(playCards.slice(10, 20));
 
     try {
-      await db.collection('rooms').doc(roomId).update({});
+      await db.collection('rooms').doc(roomId).update({
+        player1Hand: null,
+        // player2Hand: playCards.slice(10, 20),
+        // player3Hand: playCards.slice(20, 30),
+        // player4Hand: playCards.slice(30, 40),
+        taskCards: null,
+        isGameDone: false,
+      });
     } catch (err) {
       console.error(err);
     } finally {
