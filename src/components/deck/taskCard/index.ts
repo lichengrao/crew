@@ -5,6 +5,6 @@ export const initTaskCard = (value: number, suit: Suit): TaskCard => {
     value: value,
     suit: suit,
     type: CardType.Task,
-    task: undefined,
+    //task: undefined,
   };
 };

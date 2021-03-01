@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 
 import { CardState, CardType, Clue, PlayCard, Suit, TaskCard } from 'typings';
+import { Card } from './styles';
 
 export const initPlayCard = (
   value: number,
   suit: Suit,
   playerId = -1,
-  state = CardState.Deck,
-  clue?: Clue,
-  taskCard?: TaskCard
+  state = CardState.Deck
+  //clue?: Clue,
+  //taskCard?: TaskCard
 ): PlayCard => {
   return {
     value: value,
@@ -16,8 +17,8 @@ export const initPlayCard = (
     type: CardType.Play,
     playerId: playerId,
     state: state,
-    clue: clue,
-    taskCard: taskCard,
+    //clue: clue,
+    //taskCard: taskCard,
   };
 };
 
@@ -32,10 +33,10 @@ interface IProps {
 
 const PlayCardComponent: FC<IProps> = ({ value, suit }) => {
   return (
-    <>
+    <Card>
       <div>{value}</div>
       <div>{Suit[suit]}</div>
-    </>
+    </Card>
   );
 };
 

@@ -23,18 +23,48 @@ function Room() {
         <Board>
           <Center>Center Area</Center>
           <PlayerHandArea className="top">
-            <PlayerHand className="top">top</PlayerHand>
+            <PlayerHand className="top">
+              {room.player3Hand.map((card) =>
+                card ? (
+                  <PlayCardComponent value={card.value} suit={card.suit} />
+                ) : (
+                  <div />
+                )
+              )}
+            </PlayerHand>
           </PlayerHandArea>
           <PlayerHandArea className="left">
-            <PlayerHand className="left">left</PlayerHand>
+            <PlayerHand className="left">
+              {room.player2Hand.map((card) =>
+                card ? (
+                  <PlayCardComponent value={card.value} suit={card.suit} />
+                ) : (
+                  <div />
+                )
+              )}
+            </PlayerHand>
           </PlayerHandArea>
           <PlayerHandArea className="bottom">
             <PlayerHand className="bottom">
-              <PlayCardComponent value={1} suit={Suit.Pink} />
+              {room.player1Hand.map((card) =>
+                card ? (
+                  <PlayCardComponent value={card.value} suit={card.suit} />
+                ) : (
+                  <div />
+                )
+              )}
             </PlayerHand>
           </PlayerHandArea>
           <PlayerHandArea className="right">
-            <PlayerHand className="right">right</PlayerHand>
+            <PlayerHand className="right">
+              {room.player4Hand.map((card) =>
+                card ? (
+                  <PlayCardComponent value={card.value} suit={card.suit} />
+                ) : (
+                  <div />
+                )
+              )}
+            </PlayerHand>
           </PlayerHandArea>
         </Board>
       </Container>

@@ -4,10 +4,10 @@ export const Board = styled.div`
   flex: 1;
   display: grid;
   grid-template:
-    '. topHand .' 2fr
-    'leftHand Center rightHand' 7fr
-    '. bottomHand .' 2fr /
-    2fr 7fr 2fr;
+    '. topHand .' 1fr
+    'leftHand Center rightHand' 5fr
+    '. bottomHand .' 1fr /
+    1fr 5fr 1fr;
 `;
 
 export const Center = styled.div`
@@ -38,6 +38,7 @@ export const PlayerHandArea = styled.div`
   &.left {
     background: yellow;
     grid-area: leftHand;
+    width: 100px;
   }
 
   &.bottom {
@@ -48,10 +49,13 @@ export const PlayerHandArea = styled.div`
   &.right {
     background: lightpink;
     grid-area: rightHand;
+    width: 100px;
   }
 `;
 
 export const PlayerHand = styled.div`
+  display: flex;
+  flex-direction: row;
   &.top {
   }
 
