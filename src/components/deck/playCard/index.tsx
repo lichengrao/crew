@@ -35,7 +35,7 @@ const PlayCardComponent: FC<IProps> = ({ value, suit }) => {
   return (
     <Card>
       <div>{value}</div>
-      <div>{Suit[suit]}</div>
+      <div>{Suit[suit][0]}</div>
     </Card>
   );
 };

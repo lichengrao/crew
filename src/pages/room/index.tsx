@@ -21,7 +21,7 @@ function Room() {
     <>
       <Container>
         <Board>
-          <Center>Center Area</Center>
+          <Center>:)</Center>
           <PlayerHandArea className="top">
             <PlayerHand className="top">
               {room.player3Hand.map((card) =>

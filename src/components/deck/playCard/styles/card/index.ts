@@ -5,7 +5,10 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid ${theme.colors.black};
+    border-radius: 5px;
     justify-content: center;
     align-items: center;
+    margin: 2px;
+    padding: 5px;
   `}
 `;
