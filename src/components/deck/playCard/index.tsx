@@ -33,7 +33,7 @@ interface IProps {
 
 const PlayCardComponent: FC<IProps> = ({ value, suit }) => {
   return (
-    <Card>
+    <Card cardColor={Suit[suit] === 'Rocket' ? 'Gray' : Suit[suit]}>
       <div>{value}</div>
       <div>{Suit[suit][0]}</div>
     </Card>
