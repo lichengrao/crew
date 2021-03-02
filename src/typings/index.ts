@@ -50,16 +50,10 @@ export type Hand = Map<Suit, PlayCard[]>;
 export interface PlayCard {
   readonly value: number;
   readonly suit: Suit;
-  readonly type: CardType.Play;
-  playerId: number;
-  state: CardState;
-  clue?: Clue;
-  taskCard?: TaskCard;
 }
 
 export interface Task {
   taskCard: TaskCard;
-  taskToken?: TaskToken;
   playerId: number;
   taskState: TaskState;
 }
@@ -67,8 +61,6 @@ export interface Task {
 export interface TaskCard {
   readonly value: number;
   readonly suit: Suit;
-  readonly type: CardType.Task;
-  task?: Task;
 }
 
 export enum TaskState {

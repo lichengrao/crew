@@ -1,4 +1,4 @@
-import { initDeck } from 'components';
+import { initShuffledDeck } from './helpers';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const useStartNewGame = (): Output => {
 
   const startNewGame = async () => {
     setIsStartingNewGame(true);
-    const { playCards, taskCards } = initDeck();
+    const { playCards, taskCards } = initShuffledDeck();
 
     console.log(playCards.slice(0, 10));
 
