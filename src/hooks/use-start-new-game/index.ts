@@ -1,4 +1,4 @@
-import { initShuffledDeck } from './helpers';
+import { dealPlayCards, initShuffledDeck } from './helpers';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -9,26 +9,29 @@ interface Output {
   startNewGame: () => Promise<void>;
 }
 
-const useStartNewGame = (): Output => {
+const useStartNewGame = (
+  playerIds: string[] = ['1', '2', '3', '4']
+): Output => {
   const { roomId } = useParams<{ roomId: string }>();
   const [isStartingNewGame, setIsStartingNewGame] = useState(false);
 
   const startNewGame = async () => {
     setIsStartingNewGame(true);
     const { playCards, taskCards } = initShuffledDeck();
+    const { playerIdToHandMap, commanderId } = dealPlayCards(
+      playCards,
+      playerIds
+    );
+
+    console.log(playerIdToHandMap);
 
     try {
-      await db
-        .collection('rooms')
-        .doc(roomId)
-        .update({
-          player1Hand: playCards.slice(0, 10),
-          player2Hand: playCards.slice(10, 20),
-          player3Hand: playCards.slice(20, 30),
-          player4Hand: playCards.slice(30, 40),
-          taskCards: taskCards,
-          isGameDone: false,
-        });
+      await db.collection('rooms').doc(roomId).update({
+        playerIdToHandMap,
+        commanderId,
+        taskCards,
+        isGameDone: false,
+      });
     } catch (err) {
       console.error(err);
     } finally {
