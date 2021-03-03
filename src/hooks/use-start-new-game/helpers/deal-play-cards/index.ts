@@ -4,31 +4,31 @@ import { isRocketFour } from './is-rocket-four';
 import { sortPlayCardsByValue } from './sort-play-cards-by-value';
 
 interface Output {
-  playerIdToHandMap: Map<string, Hand>;
+  playerIdToHandMap: { [playerId: string]: Hand };
   commanderId: string;
 }
 
 const dealPlayCards = (playCards: PlayCard[], playerIds: string[]): Output => {
   let commanderId: string | undefined;
-  const playerIdToHandMap: Map<string, Hand> = new Map();
+  const playerIdToHandMap: { [playerId: string]: Hand } = {};
 
   playerIds.forEach((playerId) => {
-    playerIdToHandMap.set(playerId, initHand());
+    playerIdToHandMap[playerId] = initHand();
   });
 
   playCards.forEach((card: PlayCard, index: number) => {
     const playerId = playerIds[index % playerIds.length];
-    playerIdToHandMap.get(playerId)?.get(card.suit)?.push(card);
+    playerIdToHandMap[playerId]?.[card.suit]?.push(card);
     if (isRocketFour(card)) {
       commanderId = playerId;
     }
   });
 
-  playerIdToHandMap.forEach((hand) =>
-    hand.forEach((playcards) => {
+  Object.values(playerIdToHandMap).forEach((hand) => {
+    Object.values(hand).forEach((playcards) => {
       sortPlayCardsByValue(playcards);
-    })
-  );
+    });
+  });
 
   if (commanderId === undefined) {
     throw new Error('Internal error: commander does not exist');

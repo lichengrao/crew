@@ -45,7 +45,9 @@ export interface Deck {
   taskCards: TaskCard[];
 }
 
-export type Hand = Map<Suit, PlayCard[]>;
+export type Hand = {
+  [suit in Suit]: PlayCard[];
+};
 
 export interface PlayCard {
   readonly value: number;
