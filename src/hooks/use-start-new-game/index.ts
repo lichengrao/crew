@@ -17,8 +17,6 @@ const useStartNewGame = (): Output => {
     setIsStartingNewGame(true);
     const { playCards, taskCards } = initShuffledDeck();
 
-    console.log(playCards.slice(0, 10));
-
     try {
       await db
         .collection('rooms')
@@ -28,7 +26,7 @@ const useStartNewGame = (): Output => {
           player2Hand: playCards.slice(10, 20),
           player3Hand: playCards.slice(20, 30),
           player4Hand: playCards.slice(30, 40),
-          //taskCards: taskCards,
+          taskCards: taskCards,
           isGameDone: false,
         });
     } catch (err) {

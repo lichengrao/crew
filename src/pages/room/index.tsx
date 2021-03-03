@@ -24,46 +24,30 @@ function Room() {
           <Center>:)</Center>
           <PlayerHandArea className="top">
             <PlayerHand className="top">
-              {room.player3Hand.map((card) =>
-                card ? (
-                  <PlayCardComponent value={card.value} suit={card.suit} />
-                ) : (
-                  <div />
-                )
-              )}
+              {room.player3Hand.map((card) => (
+                <PlayCardComponent value={card.value} suit={card.suit} />
+              ))}
             </PlayerHand>
           </PlayerHandArea>
           <PlayerHandArea className="left">
             <PlayerHand className="left">
-              {room.player2Hand.map((card) =>
-                card ? (
-                  <PlayCardComponent value={card.value} suit={card.suit} />
-                ) : (
-                  <div />
-                )
-              )}
+              {room.player2Hand.map((card) => (
+                <PlayCardComponent value={card.value} suit={card.suit} />
+              ))}
             </PlayerHand>
           </PlayerHandArea>
           <PlayerHandArea className="bottom">
             <PlayerHand className="bottom">
-              {room.player1Hand.map((card) =>
-                card ? (
-                  <PlayCardComponent value={card.value} suit={card.suit} />
-                ) : (
-                  <div />
-                )
-              )}
+              {room.player1Hand.map((card) => (
+                <PlayCardComponent value={card.value} suit={card.suit} />
+              ))}
             </PlayerHand>
           </PlayerHandArea>
           <PlayerHandArea className="right">
             <PlayerHand className="right">
-              {room.player4Hand.map((card) =>
-                card ? (
-                  <PlayCardComponent value={card.value} suit={card.suit} />
-                ) : (
-                  <div />
-                )
-              )}
+              {room.player4Hand.map((card) => (
+                <PlayCardComponent value={card.value} suit={card.suit} />
+              ))}
             </PlayerHand>
           </PlayerHandArea>
         </Board>

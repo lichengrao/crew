@@ -134,9 +134,17 @@ export enum GameState {
 export interface Room {
   id: string;
   isGameDone: boolean;
-  player1Hand: Array<PlayCard | null>;
-  player2Hand: Array<PlayCard | null>;
-  player3Hand: Array<PlayCard | null>;
-  player4Hand: Array<PlayCard | null>;
-  taskCards: Array<TaskCard | null>;
+  player1Hand: Array<PlayCard>;
+  player2Hand: Array<PlayCard>;
+  player3Hand: Array<PlayCard>;
+  player4Hand: Array<PlayCard>;
+  taskCards: Array<TaskCard>;
+  //currentTrick: Map / Array;
+  //player1Clue - player4Clue
+}
+
+export interface User {
+  displayName: string;
+  id: string;
+  roomId?: string;
 }

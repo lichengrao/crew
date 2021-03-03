@@ -38,7 +38,8 @@ export const PlayerHandArea = styled.div`
   &.left {
     background: yellow;
     grid-area: leftHand;
-    width: 100px;
+    min-width: 0px;
+    overflow: hidden;
   }
 
   &.bottom {
@@ -49,7 +50,8 @@ export const PlayerHandArea = styled.div`
   &.right {
     background: lightpink;
     grid-area: rightHand;
-    width: 100px;
+    min-width: 0px;
+    overflow: hidden;
   }
 `;
 
