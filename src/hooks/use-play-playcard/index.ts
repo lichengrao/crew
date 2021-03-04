@@ -27,7 +27,7 @@ const usePlayPlayCard = (): Output => {
     setIsPlayingPlayCard(true);
     try {
       //update playerId's hand
-      const { playerIdToHandMap } = room;
+      const { currentTrick, playerIdToHandMap } = room;
 
       const arrayContainingCard = playerIdToHandMap[playerId][suit];
       arrayContainingCard.splice(
@@ -35,7 +35,13 @@ const usePlayPlayCard = (): Output => {
         1
       );
 
-      await db.collection('rooms').doc(roomId).update({ playerIdToHandMap });
+      //add playcard to currentTrick
+      currentTrick[playerId] = { suit, value };
+
+      await db
+        .collection('rooms')
+        .doc(roomId)
+        .update({ currentTrick, playerIdToHandMap });
     } catch (err) {
       console.error(err);
       setIsPlayingPlayCard(false);

@@ -123,8 +123,7 @@ export interface TaskToken {
 }
 
 export interface Trick {
-  round: number;
-  cards: PlayCard[];
+  [playerId: string]: PlayCard | null;
 }
 
 export enum GameState {
@@ -135,11 +134,8 @@ export enum GameState {
 
 export interface Room {
   id: string;
+  currentTrick: Trick;
   isGameDone: boolean;
-  player1Hand: Array<PlayCard>;
-  player2Hand: Array<PlayCard>;
-  player3Hand: Array<PlayCard>;
-  player4Hand: Array<PlayCard>;
   taskCards: Array<TaskCard>;
   playerIdToHandMap: PlayerIdToHandMap;
   commanderId?: string;

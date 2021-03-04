@@ -3,6 +3,7 @@ import { Button } from 'components';
 import { Board, Center, Container } from './styles';
 import { useRoom, useStartNewGame } from 'hooks';
 import PlayerHandAreas from './player-hand-areas';
+import CurrentTrickArea from './current-trick-area';
 
 function Room() {
   const { isFetching, room } = useRoom();
@@ -23,7 +24,7 @@ function Room() {
     <>
       <Container>
         <Board>
-          <Center>hi</Center>
+          <CurrentTrickArea room={room} />
           <PlayerHandAreas
             playerIds={playerIds}
             playerIdToHandMap={playerIdToHandMap}

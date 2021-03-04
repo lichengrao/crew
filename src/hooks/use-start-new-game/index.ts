@@ -1,4 +1,4 @@
-import { dealPlayCards, initShuffledDeck } from './helpers';
+import { dealPlayCards, getNewTrick, initShuffledDeck } from './helpers';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -22,9 +22,11 @@ const useStartNewGame = (
       playCards,
       playerIds
     );
+    const currentTrick = getNewTrick(playerIds);
 
     try {
       await db.collection('rooms').doc(roomId).update({
+        currentTrick,
         playerIdToHandMap,
         commanderId,
         taskCards,

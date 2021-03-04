@@ -9,19 +9,14 @@ interface IProps {
   suit: Suit;
   value: number;
   room: Room;
+  handleClick?: () => void;
 }
 
-const PlayCard: FC<IProps> = ({ playerId, suit, value, room }) => {
-  const { isPlayingPlayCard, playPlayCard } = usePlayPlayCard();
-
-  const handleClick = async (playerId: string, suit: Suit, value: number) => {
-    await playPlayCard(playerId, suit, value, room);
-  };
-
+const PlayCard: FC<IProps> = ({ playerId, suit, value, room, handleClick }) => {
   return (
     <Card
       cardColor={Suit[suit] === 'Rocket' ? 'Gray' : Suit[suit]}
-      onClick={() => handleClick(playerId, suit, value)}
+      onClick={handleClick}
     >
       <div>{value}</div>
       <div>{Suit[suit][0]}</div>
