@@ -32,6 +32,7 @@ const useStartNewGame = (
         taskCards,
         isGameDone: false,
         playerIds,
+        currentPlayerTurn: commanderId,
       });
     } catch (err) {
       console.error(err);

@@ -1,30 +1,33 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const PlayerHandAreaContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &.top {
-    background: lightblue;
-    grid-area: top;
-  }
+export const PlayerHandAreaContainer = styled.div<{ currentTurn: boolean }>`
+  ${({ currentTurn }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: ${currentTurn ? 'solid' : 'none'};
+    &.top {
+      background: lightblue;
+      grid-area: top;
+    }
 
-  &.left {
-    background: yellow;
-    grid-area: left;
-    min-width: 0px;
-    overflow: hidden;
-  }
+    &.left {
+      background: yellow;
+      grid-area: left;
+      min-width: 0px;
+      overflow: hidden;
+    }
 
-  &.bottom {
-    background: lightgreen;
-    grid-area: bottom;
-  }
+    &.bottom {
+      background: lightgreen;
+      grid-area: bottom;
+    }
 
-  &.right {
-    background: lightpink;
-    grid-area: right;
-    min-width: 0px;
-    overflow: hidden;
-  }
+    &.right {
+      background: lightpink;
+      grid-area: right;
+      min-width: 0px;
+      overflow: hidden;
+    }
+  `}
 `;

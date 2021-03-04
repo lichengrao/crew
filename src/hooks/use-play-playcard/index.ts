@@ -24,10 +24,13 @@ const usePlayPlayCard = (): Output => {
     value: number,
     room: Room
   ) => {
+    if (playerId !== room.currentPlayerTurn)
+      return console.log('not your turn');
+
     setIsPlayingPlayCard(true);
     try {
       //update playerId's hand
-      const { currentTrick, playerIdToHandMap } = room;
+      const { currentTrick, playerIds, playerIdToHandMap } = room;
 
       const arrayContainingCard = playerIdToHandMap[playerId][suit];
       arrayContainingCard.splice(
@@ -38,10 +41,19 @@ const usePlayPlayCard = (): Output => {
       //add playcard to currentTrick
       currentTrick[playerId] = { suit, value };
 
-      await db
-        .collection('rooms')
-        .doc(roomId)
-        .update({ currentTrick, playerIdToHandMap });
+      //find id of next player
+      const nextPlayerId =
+        playerIds[
+          (((playerIds.indexOf(playerId) - 1) % playerIds.length) +
+            playerIds.length) %
+            playerIds.length
+        ];
+
+      await db.collection('rooms').doc(roomId).update({
+        currentPlayerTurn: nextPlayerId,
+        currentTrick,
+        playerIdToHandMap,
+      });
     } catch (err) {
       console.error(err);
       setIsPlayingPlayCard(false);

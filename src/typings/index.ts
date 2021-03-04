@@ -138,8 +138,9 @@ export interface Room {
   isGameDone: boolean;
   taskCards: Array<TaskCard>;
   playerIdToHandMap: PlayerIdToHandMap;
-  commanderId?: string;
+  commanderId: string;
   playerIds: string[];
+  currentPlayerTurn: string;
 }
 
 export interface PlayerIdToHandMap {

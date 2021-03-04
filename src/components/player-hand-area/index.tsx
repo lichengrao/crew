@@ -12,7 +12,10 @@ interface IProps {
 
 const PlayerHandArea: FC<IProps> = ({ hand, playerId, position, room }) => {
   return (
-    <PlayerHandAreaContainer className={position}>
+    <PlayerHandAreaContainer
+      className={position}
+      currentTurn={playerId === room.currentPlayerTurn}
+    >
       <PlayerHand
         hand={hand}
         playerId={playerId}
