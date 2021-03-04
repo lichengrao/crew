@@ -23,14 +23,13 @@ const useStartNewGame = (
       playerIds
     );
 
-    console.log(playerIdToHandMap);
-
     try {
       await db.collection('rooms').doc(roomId).update({
         playerIdToHandMap,
         commanderId,
         taskCards,
         isGameDone: false,
+        playerIds,
       });
     } catch (err) {
       console.error(err);

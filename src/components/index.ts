@@ -1,2 +1,4 @@
-export * from './deck';
+export { default as PlayCard } from './playcard';
+export { default as PlayerHand } from './player-hand';
+export { default as PlayerHandArea } from './player-hand-area';
 export * from './styles';

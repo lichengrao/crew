@@ -141,8 +141,13 @@ export interface Room {
   player3Hand: Array<PlayCard>;
   player4Hand: Array<PlayCard>;
   taskCards: Array<TaskCard>;
-  //currentTrick: Map / Array;
-  //player1Clue - player4Clue
+  playerIdToHandMap: PlayerIdToHandMap;
+  commanderId?: string;
+  playerIds: string[];
+}
+
+export interface PlayerIdToHandMap {
+  [playerId: string]: Hand;
 }
 
 export interface User {

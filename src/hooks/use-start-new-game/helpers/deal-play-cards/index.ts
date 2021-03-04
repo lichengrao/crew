@@ -1,16 +1,16 @@
-import { Hand, PlayCard } from 'typings';
+import { Hand, PlayCard, PlayerIdToHandMap } from 'typings';
 import { initHand } from './init-hand';
 import { isRocketFour } from './is-rocket-four';
 import { sortPlayCardsByValue } from './sort-play-cards-by-value';
 
 interface Output {
-  playerIdToHandMap: { [playerId: string]: Hand };
+  playerIdToHandMap: PlayerIdToHandMap;
   commanderId: string;
 }
 
 const dealPlayCards = (playCards: PlayCard[], playerIds: string[]): Output => {
   let commanderId: string | undefined;
-  const playerIdToHandMap: { [playerId: string]: Hand } = {};
+  const playerIdToHandMap: PlayerIdToHandMap = {};
 
   playerIds.forEach((playerId) => {
     playerIdToHandMap[playerId] = initHand();

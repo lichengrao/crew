@@ -1,4 +1,4 @@
-import { Hand, PlayCard } from 'typings';
+import { Hand, PlayCard, Suit } from 'typings';
 
 export const initHand = (): Hand => {
   const hand: Hand = {
