@@ -1,17 +1,24 @@
 import { PlayerHand } from 'components';
 import React, { FC } from 'react';
-import { Hand } from 'typings';
+import { Hand, Room } from 'typings';
 import { PlayerHandAreaContainer } from './styles';
 
 interface IProps {
-  position: string;
   hand: Hand;
+  playerId: string;
+  position: string;
+  room: Room;
 }
 
-const PlayerHandArea: FC<IProps> = ({ position, hand }) => {
+const PlayerHandArea: FC<IProps> = ({ hand, playerId, position, room }) => {
   return (
     <PlayerHandAreaContainer className={position}>
-      <PlayerHand position={position} hand={hand} />
+      <PlayerHand
+        hand={hand}
+        playerId={playerId}
+        position={position}
+        room={room}
+      />
     </PlayerHandAreaContainer>
   );
 };

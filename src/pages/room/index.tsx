@@ -2,7 +2,7 @@ import { Button } from 'components';
 
 import { Board, Center, Container } from './styles';
 import { useRoom, useStartNewGame } from 'hooks';
-import PlayerHands from './player-hands';
+import PlayerHandAreas from './player-hand-areas';
 
 function Room() {
   const { isFetching, room } = useRoom();
@@ -24,9 +24,10 @@ function Room() {
       <Container>
         <Board>
           <Center>hi</Center>
-          <PlayerHands
+          <PlayerHandAreas
             playerIds={playerIds}
             playerIdToHandMap={playerIdToHandMap}
+            room={room}
           />
         </Board>
       </Container>

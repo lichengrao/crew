@@ -1,16 +1,28 @@
+import { usePlayPlayCard } from 'hooks';
 import React, { FC } from 'react';
 
-import { Suit } from 'typings';
+import { Room, Suit } from 'typings';
 import { Card } from './styles';
 
 interface IProps {
-  value: number;
+  playerId: string;
   suit: Suit;
+  value: number;
+  room: Room;
 }
 
-const PlayCard: FC<IProps> = ({ value, suit }) => {
+const PlayCard: FC<IProps> = ({ playerId, suit, value, room }) => {
+  const { isPlayingPlayCard, playPlayCard } = usePlayPlayCard();
+
+  const handleClick = async (playerId: string, suit: Suit, value: number) => {
+    await playPlayCard(playerId, suit, value, room);
+  };
+
   return (
-    <Card cardColor={Suit[suit] === 'Rocket' ? 'Gray' : Suit[suit]}>
+    <Card
+      cardColor={Suit[suit] === 'Rocket' ? 'Gray' : Suit[suit]}
+      onClick={() => handleClick(playerId, suit, value)}
+    >
       <div>{value}</div>
       <div>{Suit[suit][0]}</div>
     </Card>
