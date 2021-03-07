@@ -19,12 +19,7 @@ const Trick: FC<IProps> = ({ room }) => {
           className={trickCardPositions[index]}
         >
           {playcard ? (
-            <PlayCard
-              playerId={playerId}
-              suit={playcard.suit}
-              value={playcard.value}
-              room={room}
-            />
+            <PlayCard suit={playcard.suit} value={playcard.value} />
           ) : null}
         </TrickCardContainer>
       ))}

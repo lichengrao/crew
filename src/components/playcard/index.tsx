@@ -1,18 +1,15 @@
-import { usePlayPlayCard } from 'hooks';
 import React, { FC } from 'react';
 
-import { Room, Suit } from 'typings';
+import { Suit } from 'typings';
 import { Card } from './styles';
 
 interface IProps {
-  playerId: string;
   suit: Suit;
   value: number;
-  room: Room;
   handleClick?: () => void;
 }
 
-const PlayCard: FC<IProps> = ({ playerId, suit, value, room, handleClick }) => {
+const PlayCard: FC<IProps> = ({ suit, value, handleClick }) => {
   return (
     <Card
       cardColor={Suit[suit] === 'Rocket' ? 'Gray' : Suit[suit]}

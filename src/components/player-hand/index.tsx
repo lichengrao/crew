@@ -17,7 +17,16 @@ const PlayerHand: FC<IProps> = ({ hand, playerId, position, room }) => {
   const { isPlayingPlayCard, playPlayCard } = usePlayPlayCard();
 
   const handleClick = async (playerId: string, suit: Suit, value: number) => {
+    if (isPlayingPlayCard) return;
+    console.log(room);
+
     await playPlayCard(playerId, suit, value, room);
+
+    console.log(room);
+    //check trick if trick is full
+    //resolveTrick();
+
+    setTimeout(() => console.log(room), 5000);
   };
 
   return (
@@ -26,10 +35,8 @@ const PlayerHand: FC<IProps> = ({ hand, playerId, position, room }) => {
         Object.values(playcards).map((card) => (
           <PlayCard
             key={`${cardNum++}`}
-            playerId={playerId}
             suit={card.suit}
             value={card.value}
-            room={room}
             handleClick={() => handleClick(playerId, card.suit, card.value)}
           />
         ))
