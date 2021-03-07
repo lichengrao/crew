@@ -15,10 +15,10 @@ export const CurrentUserProvider: FC = ({ children }) => {
   const [user, setUser] = useState<User | undefined>(undefined);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (u) => {
-      if (u?.uid) {
-        const doc = await db.collection('users').doc(u?.uid).get();
-        if (doc.exists) return setUser({ ...doc.data(), id: doc.id } as User);
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const uid = user.uid;
+        return setUser({ id: uid } as User);
       }
       return setUser(undefined);
     });

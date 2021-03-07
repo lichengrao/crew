@@ -148,7 +148,7 @@ export interface PlayerIdToHandMap {
 }
 
 export interface User {
-  displayName: string;
+  displayName?: string;
   id: string;
   roomId?: string;
 }
