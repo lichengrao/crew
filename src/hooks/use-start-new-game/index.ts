@@ -6,16 +6,14 @@ import { db } from 'services';
 
 interface Output {
   isStartingNewGame: boolean;
-  startNewGame: () => Promise<void>;
+  startNewGame: (playerIds: string[]) => Promise<void>;
 }
 
-const useStartNewGame = (
-  playerIds: string[] = ['1', '2', '3', '4']
-): Output => {
+const useStartNewGame = (): Output => {
   const { roomId } = useParams<{ roomId: string }>();
   const [isStartingNewGame, setIsStartingNewGame] = useState(false);
 
-  const startNewGame = async () => {
+  const startNewGame = async (playerIds: string[] = ['1', '2', '3', '4']) => {
     setIsStartingNewGame(true);
     const { playCards, taskCards } = initShuffledDeck();
     const { playerIdToHandMap, commanderId } = dealPlayCards(

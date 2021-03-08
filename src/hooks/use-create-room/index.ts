@@ -33,7 +33,9 @@ const useCreateRoom = (): Output => {
       }
 
       await db.collection('rooms').doc(roomId).set({
+        isWaiting: true,
         playerIds: [],
+        playerNames: {},
       });
     } catch (err) {
       console.error(err);

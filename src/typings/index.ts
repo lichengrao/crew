@@ -133,14 +133,20 @@ export enum GameState {
 }
 
 export interface Room {
-  id: string;
-  currentTrick: Trick;
-  isGameDone: boolean;
-  taskCards: Array<TaskCard>;
-  playerIdToHandMap: PlayerIdToHandMap;
   commanderId: string;
-  playerIds: string[];
   currentPlayerTurn: string;
+  currentTrick: Trick;
+  id: string;
+  isGameDone: boolean;
+  isWaiting: boolean;
+  playerIds: string[];
+  playerIdToHandMap: PlayerIdToHandMap;
+  playerNames: PlayerIdToNameMap;
+  taskCards: Array<TaskCard>;
+}
+
+export interface PlayerIdToNameMap {
+  [playerId: string]: string;
 }
 
 export interface PlayerIdToHandMap {

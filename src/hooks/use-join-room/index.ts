@@ -6,14 +6,14 @@ import { db } from 'services';
 
 interface Output {
   isJoining: boolean;
-  joinRoom: (userId: string) => Promise<void>;
+  joinRoom: (userId: string, playerName: string) => Promise<void>;
 }
 
 const useJoinRoom = (): Output => {
   const { roomId } = useParams<{ roomId: string }>();
   const [isJoining, setIsJoining] = useState(false);
 
-  const joinRoom = async (userId: string) => {
+  const joinRoom = async (userId: string, playerName: string) => {
     setIsJoining(true);
     try {
       const doc = await db.collection('rooms').doc(roomId).get();
@@ -27,6 +27,7 @@ const useJoinRoom = (): Output => {
           .doc(roomId)
           .update({
             playerIds: firebase.firestore.FieldValue.arrayUnion(userId),
+            [`playerNames.${userId}`]: playerName,
           });
       }
     } catch (err) {

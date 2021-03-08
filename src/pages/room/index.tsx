@@ -11,6 +11,7 @@ import {
 } from 'hooks';
 import PlayerHandAreas from './player-hand-areas';
 import CurrentTrickArea from './current-trick-area';
+import Waiting from './waiting';
 
 const Room: FC = () => {
   const user = useCurrentUser();
@@ -22,27 +23,17 @@ const Room: FC = () => {
   if (isFetching) return <H1>Finding Room</H1>;
   if (!room) return <H1>Can't find Room</H1>;
 
-  const { playerIds, playerIdToHandMap } = room;
-
-  const handleJoinRoom = async () => {
-    if (user && !isJoining) {
-      await joinRoom(user.id);
-    }
-  };
-
-  const handleLeaveRoom = async () => {
-    if (user && !isLeaving) {
-      await leaveRoom('1');
-    }
-  };
+  const { isWaiting, playerIds, playerIdToHandMap } = room;
 
   const handleStartNewGame = async () => {
     if (!isStartingNewGame) {
-      await startNewGame();
+      await startNewGame(room.playerIds);
     }
   };
 
-  return (
+  return isWaiting ? (
+    <Waiting room={room} />
+  ) : (
     <>
       <Container>
         <Board>
@@ -57,12 +48,6 @@ const Room: FC = () => {
       <Button disabled={isStartingNewGame} onClick={handleStartNewGame}>
         Create New Game
       </Button>
-      {user && (
-        <>
-          <Button onClick={handleJoinRoom}>Join Room</Button>
-          <Button onClick={handleLeaveRoom}>Leave Room</Button>
-        </>
-      )}
     </>
   );
 };
