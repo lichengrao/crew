@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 
-import { auth, db } from 'services';
+import { auth } from 'services';
 import { User } from 'typings';
 
 const CurrentUserContext = createContext<User | undefined>(undefined);

@@ -8,20 +8,23 @@ const Home: FC = () => {
   const history = useHistory();
   const currentUser = useCurrentUser();
 
+  const goToCreateRoom = () => {
+    history.push('/create');
+  };
+
   const goToJoinRoom = () => {
-    history.push('/r/AAAA'); // for testing
+    history.push('/join');
   };
 
   const goToLogin = () => {
     history.push('/login');
   };
 
-  console.log(currentUser);
-
   return (
     <>
-      <H1>Home Page</H1>
-      <Button onClick={goToJoinRoom}>Go to Game Room</Button>
+      <H1>Home</H1>
+      <Button onClick={goToCreateRoom}>Create Room</Button>
+      <Button onClick={goToJoinRoom}>Join Room</Button>
       {currentUser ? <></> : <Button onClick={goToLogin}>Login</Button>}
     </>
   );
