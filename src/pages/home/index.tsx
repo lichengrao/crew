@@ -22,7 +22,7 @@ const Home: FC = () => {
 
   return (
     <>
-      <H1>Home</H1>
+      <H1>Home Page</H1>
       <Button onClick={goToCreateRoom}>Create Room</Button>
       <Button onClick={goToJoinRoom}>Join Room</Button>
       {currentUser ? <></> : <Button onClick={goToLogin}>Login</Button>}

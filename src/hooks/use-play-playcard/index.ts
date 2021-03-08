@@ -56,6 +56,7 @@ const usePlayPlayCard = (): Output => {
       });
     } catch (err) {
       console.error(err);
+    } finally {
       setIsPlayingPlayCard(false);
     }
   };
