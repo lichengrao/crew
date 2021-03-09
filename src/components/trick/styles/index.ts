@@ -19,22 +19,18 @@ export const TrickCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   &.top {
-    background: lightblue;
     grid-area: top;
   }
 
   &.left {
-    background: yellow;
     grid-area: left;
   }
 
   &.bottom {
-    background: lightgreen;
     grid-area: bottom;
   }
 
   &.right {
-    background: lightpink;
     grid-area: right;
   }
 `;
