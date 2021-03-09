@@ -1,4 +1,6 @@
 import { PlayerHandArea } from 'components';
+import getBoardPosition from 'helpers/get-board-position';
+import { useCurrentUser } from 'hooks';
 import React, { FC } from 'react';
 import { PlayerIdToHandMap, Room } from 'typings';
 
@@ -13,7 +15,8 @@ const PlayerHandAreas: FC<IProps> = ({
   playerIdToHandMap,
   room,
 }) => {
-  const playerHandAreaPositions = ['top', 'left', 'bottom', 'right'];
+  const user = useCurrentUser();
+  const playerHandAreaPositions = ['bottom', 'left', 'top', 'right'];
 
   return (
     <>
@@ -22,7 +25,7 @@ const PlayerHandAreas: FC<IProps> = ({
           key={`PlayerHandArea of ${playerId}`}
           hand={playerIdToHandMap[playerId]}
           playerId={playerId}
-          position={playerHandAreaPositions[index]}
+          position={getBoardPosition(playerId, user?.id, playerIds)}
           room={room}
         />
       ))}

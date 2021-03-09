@@ -1,4 +1,6 @@
-import { PlayCard } from 'components';
+import { PlayCardFront } from 'components/playcard';
+import getBoardPosition from 'helpers/get-board-position';
+import { useCurrentUser } from 'hooks';
 import React, { FC } from 'react';
 import { Room } from 'typings';
 import { Container, TrickCardContainer } from './styles';
@@ -8,19 +10,20 @@ interface IProps {
 }
 
 const Trick: FC<IProps> = ({ room }) => {
-  const { currentTrick } = room;
-  const trickCardPositions = ['top', 'left', 'bottom', 'right'];
+  const user = useCurrentUser();
+  const { currentTrick, playerIds } = room;
+  const trickCardPositions = ['bottom', 'left', 'top', 'right'];
 
   return (
     <Container>
       {Object.entries(currentTrick).map(([playerId, playcard], index) => (
         <TrickCardContainer
           key={`trick${index}`}
-          className={trickCardPositions[index]}
+          className={getBoardPosition(playerId, user?.id, playerIds)}
         >
-          {playcard ? (
-            <PlayCard suit={playcard.suit} value={playcard.value} />
-          ) : null}
+          {playcard && (
+            <PlayCardFront suit={playcard.suit} value={playcard.value} />
+          )}
         </TrickCardContainer>
       ))}
     </Container>

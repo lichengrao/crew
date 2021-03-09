@@ -29,6 +29,7 @@ const useStartNewGame = (): Output => {
         commanderId,
         taskCards,
         isGameDone: false,
+        isWaiting: false,
         playerIds,
         currentPlayerTurn: commanderId,
       });

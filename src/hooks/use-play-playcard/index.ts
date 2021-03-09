@@ -7,7 +7,7 @@ import { Room, Suit } from 'typings';
 interface Output {
   isPlayingPlayCard: boolean;
   playPlayCard: (
-    playerId: string,
+    playerId: string | undefined,
     suit: Suit,
     value: number,
     room: Room
@@ -19,7 +19,7 @@ const usePlayPlayCard = (): Output => {
   const [isPlayingPlayCard, setIsPlayingPlayCard] = useState(false);
 
   const playPlayCard = async (
-    playerId: string,
+    playerId: string | undefined,
     suit: Suit,
     value: number,
     room: Room

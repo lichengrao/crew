@@ -13,6 +13,8 @@ export const Card = styled.div<{ cardColor: string }>`
     padding: 5px;
     cursor: pointer;
     user-select: none;
+    height: 40px;
+    width: 10px;
 
     &:hover {
       background: ${theme.colors.lightBlue};

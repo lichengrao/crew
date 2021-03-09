@@ -1,4 +1,4 @@
-import { PlayerHand } from 'components';
+import { H1, PlayerHand } from 'components';
 import React, { FC } from 'react';
 import { Hand, Room } from 'typings';
 import { PlayerHandAreaContainer } from './styles';

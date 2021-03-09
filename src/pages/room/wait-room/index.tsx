@@ -1,5 +1,5 @@
 import { Button, Field, H1 } from 'components';
-import { useCurrentUser, useJoinRoom, useLogin } from 'hooks';
+import { useCurrentUser, useJoinRoom, useLogin, useStartNewGame } from 'hooks';
 import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Room } from 'typings';
@@ -8,12 +8,15 @@ interface IProps {
   room: Room;
 }
 
-const Waiting: FC<IProps> = ({ room }) => {
+const WaitRoom: FC<IProps> = ({ room }) => {
   const { roomId } = useParams<{ roomId: string }>();
   const user = useCurrentUser();
   const { isJoining, joinRoom } = useJoinRoom();
   const { isLoggingIn, login } = useLogin();
+  const { isStartingNewGame, startNewGame } = useStartNewGame();
   const [playerName, setPlayerName] = useState('');
+
+  const { playerIds, playerNames } = room;
 
   const loginIfNotLoggedIn = async () => {
     if (!user && !isLoggingIn) {
@@ -23,15 +26,19 @@ const Waiting: FC<IProps> = ({ room }) => {
 
   const handleJoinRoom = async () => {
     if (!isJoining && user) {
-      joinRoom(user.id, playerName);
+      await joinRoom(user.id, playerName);
+    }
+  };
+
+  const handleStartNewGame = async () => {
+    if (!isStartingNewGame && playerIds.length === 4) {
+      await startNewGame(playerIds);
     }
   };
 
   useEffect(() => {
     loginIfNotLoggedIn();
   }, []);
-
-  const { playerIds, playerNames } = room;
 
   return (
     <>
@@ -57,9 +64,11 @@ const Waiting: FC<IProps> = ({ room }) => {
           </Button>
         </>
       )}
-      {playerIds.length === 4 && <Button>Start Game</Button>}
+      <Button onClick={handleStartNewGame}>
+        {playerIds.length === 4 ? 'Start Game' : 'Waiting For Players...'}
+      </Button>
     </>
   );
 };
 
-export default Waiting;
+export default WaitRoom;

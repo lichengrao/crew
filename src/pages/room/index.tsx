@@ -11,7 +11,7 @@ import {
 } from 'hooks';
 import PlayerHandAreas from './player-hand-areas';
 import CurrentTrickArea from './current-trick-area';
-import Waiting from './waiting';
+import WaitRoom from './wait-room';
 
 const Room: FC = () => {
   const user = useCurrentUser();
@@ -32,7 +32,7 @@ const Room: FC = () => {
   };
 
   return isWaiting ? (
-    <Waiting room={room} />
+    <WaitRoom room={room} />
   ) : (
     <>
       <Container>

@@ -9,7 +9,7 @@ interface IProps {
   handleClick?: () => void;
 }
 
-const PlayCard: FC<IProps> = ({ suit, value, handleClick }) => {
+export const PlayCardFront: FC<IProps> = ({ suit, value, handleClick }) => {
   return (
     <Card
       cardColor={Suit[suit] === 'Rocket' ? 'Gray' : Suit[suit]}
@@ -21,4 +21,6 @@ const PlayCard: FC<IProps> = ({ suit, value, handleClick }) => {
   );
 };
 
-export default PlayCard;
+export const PlayCardBack: FC = () => {
+  return <Card cardColor="Gray" />;
+};
